@@ -1,0 +1,43 @@
+
+
+CREATE TABLE venu(
+    venue_id INT AUTO_INCREMENT PRIMARY KEY,
+    venue_name TEXT NOT NULL,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+
+CREATE TABLE resume(
+    resume_id INT AUTO_INCREMENT PRIMARY KEY,
+    resume BLOB,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE application(
+    application_id INT AUTO_INCREMENT PRIMARY KEY,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    slot_id INT NOT NULL REFERENCES slots(slot_id),
+    resume_id INT REFERENCES resume(resume_id),
+    venue_id INT NOT NULL REFERENCES venu(venue_id)
+)
+
+CREATE TABLE user_applications(
+    user_id INT NOT NULL REFERENCES users(user_id),
+    application_id INT NOT NULL REFERENCES application(application_id),
+    PRIMARY KEY (user_id, application_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE job_preferences(
+    application_id INT NOT NULL REFERENCES application(application_id),
+    role_id INT NOT NULL REFERENCES roles(role_id),
+    PRIMARY KEY (application_id,role_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
