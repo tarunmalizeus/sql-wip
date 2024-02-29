@@ -89,7 +89,7 @@ INSERT INTO roles (role_name) VALUES
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
+    
 
     application_id INT NOT NULL REFERENCES application(application_id),
     role_id INT NOT NULL REFERENCES roles(role_id),
