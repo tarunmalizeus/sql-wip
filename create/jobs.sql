@@ -1,5 +1,11 @@
 
+
+
+
+
 select * from job;
+
+select * from instructions_and_requirements;
 
 CREATE TABLE instructions_and_requirements(
     instructions_and_requirements_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,6 +45,8 @@ CREATE TABLE job (
     to_time DATE NOT NULL,
     location_id INT REFERENCES location(location_id),
     internship VARCHAR(255),
+
+
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     instructions_and_requirements_id INT NOT NULL REFERENCES instructions_and_requirements(instructions_and_requirements_id),
@@ -59,16 +67,44 @@ CREATE TABLE slots_in_job(
 
 
 
-select * from slots_in_job
+select * from slots_in_job;
+
+
+
+
+
+select * from roles;
+
+
+INSERT INTO roles (role_name) VALUES
+('Instructional Designer'),
+('Software Engineer'),
+('Software Quality Engineer');
+
+
     CREATE TABLE roles (
     role_id INT AUTO_INCREMENT PRIMARY KEY,
     role_name VARCHAR(255) NOT NULL,
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
-    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    job_id INT REFERENCES job(job_id)
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
+
+    application_id INT NOT NULL REFERENCES application(application_id),
+    role_id INT NOT NULL REFERENCES roles(role_id),
+    PRIMARY KEY (application_id,role_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+
+
+
+
+
+select * from role_desc;
+
+SELECT * from role_desc where role_id=1 and job_id=1
 
 CREATE TABLE role_desc (
     job_id INT NOT NULL REFERENCES job(job_id),

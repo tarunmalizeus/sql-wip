@@ -19,9 +19,14 @@ INSERT INTO edqualification (percentage, passing_year, qualification_id, stream_
 
 select * from edqualification
 
-INSERT INTO applicationtype (applicationtype_name) VALUES ('Full Time'), ('Part Time'), ('Internship');
+INSERT INTO applicationtype (applicationtype_name) VALUES ('Fresher'), ('Experienced');
+
+
+select * from proqualification;
 
 INSERT INTO proqualification (applicationtype_id, exp_year, current_ctc, expected_ctc, currently_on_notice_period, appeared_zeus_test) VALUES (1, 5, 50000.00, 70000.00, FALSE, FALSE), (2, 3, 30000.00, 50000.00, TRUE, TRUE);
+
+select * from userdetails;
 
 INSERT INTO userdetails (
     first_name,

@@ -18,9 +18,20 @@ INSERT INTO slots (from_time, to_time) VALUES
 
 INSERT INTO slots_in_job (job_id, slot_id) VALUES (1, 1);
 
+
+INSERT INTO slots_in_job (job_id, slot_id) VALUES (1, 2);
+
+
+INSERT INTO slots_in_job (job_id, slot_id) VALUES (2, 2);
+
 INSERT INTO roles (role_name, job_id) VALUES
 ('Junior Developer', 1), ('Senior Analyst', 2);
 
 INSERT INTO role_desc (job_id, role_id, package_rupees, description, requirements) VALUES
 (1, 1, 500000.00, 'Junior developer in charge of maintaining internal tools.', 'Basic knowledge of Python and JavaScript.'),
+
 (2, 2, 700000.00, 'Senior analyst focusing on data trends and analytics.', 'Advanced knowledge of SQL and Python, experience with data visualization tools.');
+
+
+INSERT INTO role_desc (job_id, role_id, package_rupees, description, requirements) VALUES
+(1, 2, 700000.00, 'Senior analyst focusing on data trends and analytics.', 'Advanced knowledge of SQL and Python, experience with data visualization tools.');

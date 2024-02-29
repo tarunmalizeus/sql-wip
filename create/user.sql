@@ -8,6 +8,29 @@ select * from users;
 INSERT INTO users (email, password) VALUES ("johndo@exampl.com", "password123")
 
 
+select * from familiar_tech;
+
+CREATE TABLE familiar_tech (
+    tech_id INT NOT NULL REFERENCES techs(tech_id),
+    user_id INT NOT NULL REFERENCES users(user_id),
+    PRIMARY KEY (tech_id, user_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+select * from experienced_tech;
+
+CREATE TABLE experienced_tech (
+    tech_id INT NOT NULL REFERENCES techs(tech_id),
+    user_id INT NOT NULL REFERENCES users(user_id),
+    PRIMARY KEY (tech_id, user_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 
 
 CREATE TABLE users (
@@ -154,6 +177,10 @@ CREATE TABLE preferred_job_roles (
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+select * from techs
+
+insert into techs (tech_name) values ('JavaScript'), ('AngularJS'), ('React'), ('NodeJS'), ('Others');
 
 
 CREATE TABLE techs (
