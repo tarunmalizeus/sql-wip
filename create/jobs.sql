@@ -89,8 +89,34 @@ INSERT INTO roles (role_name) VALUES
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-    
 
+    SELECT * from application;
+
+
+
+    CREATE TABLE resume_for_job(
+        resume_id INT AUTO_INCREMENT PRIMARY KEY,
+        resume BLOB,
+        created DATETIME DEFAULT CURRENT_TIMESTAMP,
+        modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+
+CREATE TABLE application(
+    application_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES userdetails(user_id),
+    job_id INT NOT NULL REFERENCES job(job_id),
+    role_id INT NOT NULL REFERENCES roles(role_id),
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    slot_id INT NOT NULL REFERENCES slots(slot_id),
+    resume_id INT NOT NULL REFERENCES userassets(userassets_id)
+);
+
+
+
+
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     application_id INT NOT NULL REFERENCES application(application_id),
     role_id INT NOT NULL REFERENCES roles(role_id),
     PRIMARY KEY (application_id,role_id),
