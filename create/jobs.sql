@@ -18,6 +18,8 @@ CREATE TABLE instructions_and_requirements(
 )
 
 
+select * from things_to_remember;
+
 CREATE TABLE things_to_remember(
     things_to_remember_id INT AUTO_INCREMENT PRIMARY KEY,
     things_to_remember TEXT NOT NULL,
@@ -93,6 +95,7 @@ INSERT INTO roles (role_name) VALUES
     SELECT * from application;
 
 
+select * from resume_for_job;
 
     CREATE TABLE resume_for_job(
         resume_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,26 +108,21 @@ CREATE TABLE application(
     application_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL REFERENCES userdetails(user_id),
     job_id INT NOT NULL REFERENCES job(job_id),
-    role_id INT NOT NULL REFERENCES roles(role_id),
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     slot_id INT NOT NULL REFERENCES slots(slot_id),
     resume_id INT NOT NULL REFERENCES userassets(userassets_id)
 );
 
+select * from application_role;
 
-
-
-    created DATETIME DEFAULT CURRENT_TIMESTAMP,
-    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE application_role(
     application_id INT NOT NULL REFERENCES application(application_id),
     role_id INT NOT NULL REFERENCES roles(role_id),
-    PRIMARY KEY (application_id,role_id),
+    PRIMARY KEY (application_id, role_id),
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-
-
-
+);
 
 
 
