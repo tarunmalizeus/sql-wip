@@ -1,7 +1,15 @@
 INSERT INTO instructions_and_requirements (general_instructions, instructions_for_the_exam, min_system_requirements, process_text) VALUES
 ('General instructions about the company and job position.', 'Instructions specific to the examination process.', 'Minimum system requirements for taking the online test.', 'Process text detailing the steps involved in the application.');
 
-INSERT INTO venu (venue_name) VALUES
+CREATE TABLE venue (
+    venue_id INT AUTO_INCREMENT PRIMARY KEY,
+    venue_name VARCHAR(255) NOT NULL,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO venue (venue_name) VALUES
 ('Main Office'), ('Branch Office');
 
 INSERT INTO things_to_remember (things_to_remember) VALUES

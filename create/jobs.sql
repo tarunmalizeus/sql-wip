@@ -47,12 +47,10 @@ CREATE TABLE job (
     to_time DATE NOT NULL,
     location_id INT REFERENCES location(location_id),
     internship VARCHAR(255),
-
-
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     instructions_and_requirements_id INT NOT NULL REFERENCES instructions_and_requirements(instructions_and_requirements_id),
-    venue_id INT NOT NULL REFERENCES venu(venue_id),
+    venue_id INT NOT NULL REFERENCES venue(venue_id),
     things_to_remember_id INT NOT NULL REFERENCES things_to_remember(things_to_remember_id)
 )
 

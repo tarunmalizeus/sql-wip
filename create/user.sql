@@ -5,6 +5,9 @@ show tables;
 
 select * from users;
 
+SELECT * from users where email = "qq@gmail.com" and password = "12345678";
+
+
 INSERT INTO users (email, password) VALUES ("johndo@exampl.com", "password123")
 
 
